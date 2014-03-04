@@ -2,6 +2,7 @@ everyplay
 =========
 
 MISC NOTES
+----------
 
  - the code could be much simpler if it was solely optimized for the task; artificial complexity has been added to demonstrate various javascript idioms
 
@@ -10,12 +11,14 @@ MISC NOTES
  - estimately 10 hours time spent total, the code is by no mean a production quality
 
 HOW TO RUN
+----------
 
 $ make run
 
 ... or visit: http://jaakko.kapsi.fi/everyplay/
 
 KNOWN ISSUES / WONT FIX (TIMEBOXED)
+-----------------------------------
 
  - Only runs on webkit, sorry. The code itself runs fine on gecko, but some (likely trivial) issue prevents the rendering engine properly working.
 
