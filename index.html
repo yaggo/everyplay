@@ -1,0 +1,46 @@
+<!doctype html5>
+
+<!-- This is valid html5 markup, as omitting <head>, <body> etc. is allowed. -->
+
+<link rel="stylesheet" href="ui.css">
+
+<template id="template-video-list">
+  <div id="filter">
+    <select name="game">
+      <option value="">All games</option>
+      <option data-each="games option" data-attr="value option.id, selected option.is_selected" data-text="option.name"></option>
+    </select>
+    <label></label>
+  </div>
+  <h1>Everyplay <span>videos</span></h1>
+  <ul class="grid-with-thumbs">
+    <li data-each="videos video">
+      <a data-route="video.href">
+        <div class="thumb" data-attr="style video.inline_style"></div>
+        <div class="title" data-text="video.title"></div>
+        <div class="author" data-text="video.game.name"></div>
+      </a>
+    </li>
+  </ul>
+  <div class="no-results" data-unless="videos.length">Zarro videos found :(</div>
+</template>
+
+<template id="template-player">
+  <h1>Everyplay <span>videos</span></h1>
+  <div class="stage">
+    <video data-attr="src video.video_url, poster video.thumbnail_url" controls autobuffer preload="auto"></video>
+    <div class="meta">
+      <h2 data-text="video.title"></h2>
+      <div class="user">
+        <div class="avatar">
+          <img data-attr="src video.user.avatar_url" alt="">
+        </div>
+        <div class="username" data-text="video.user.username"></div>
+        <div class="date" data-text="video.created_at_formatted"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script src="renderer.js"></script>
+<script src="app.js"></script>

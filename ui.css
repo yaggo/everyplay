@@ -1,0 +1,232 @@
+@import url("fontello/css/icon.css");
+html.busy * {
+  cursor: wait !important;
+}
+body {
+  background: #303034;
+  color: #d0d0d4;
+  font-family: 'helvetica neue', sans-serif;
+  line-height: 1.35;
+  margin: 0;
+  padding: 0;
+  -webkit-perspective: 900;
+}
+template {
+  display: none;
+}
+* {
+  box-sizing: border-box;
+}
+a {
+  color: #2dceff;
+  text-decoration: none;
+}
+ul {
+  margin: -0.5rem;
+  padding: 0;
+}
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: 0.5rem 0 0 0;
+  line-height: 1;
+  letter-spacing: -0.1rem;
+  margin-bottom: 2rem;
+}
+h1 span {
+  font-weight: 100;
+  letter-spacing: 0.15rem;
+}
+h2 {
+  font-weight: 200;
+  font-size: 2rem;
+  margin: 0 0 2rem 0;
+}
+#page-player .stage {
+  width: 80%;
+  margin: 0 auto;
+}
+#page-player .stage video {
+  float: left;
+  width: 65%;
+  -webkit-box-reflect: below 0.25rem -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(rgba(255,255,255,0.2)));
+}
+#page-player .stage .meta {
+  float: left;
+  width: 35%;
+  padding: 0 2rem;
+}
+#page-player .stage .meta .user .avatar {
+  display: inline-block;
+  float: left;
+  margin-right: 1rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+#page-player .stage .meta .user .avatar img {
+  width: 100%;
+}
+#page-player .stage .meta .user .username {
+  display: inline-block;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+.page {
+  position: relative;
+  transform-origin: 0 0;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+  padding: 1rem;
+}
+.page.hidden {
+  -webkit-transform: translateZ(-500px);
+  -moz-transform: translateZ(-500px);
+  -ms-transform: translateZ(-500px);
+  -o-transform: translateZ(-500px);
+  transform: translateZ(-500px);
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.no-results {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 100;
+  display: block;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  height: 90%;
+}
+.grid-with-thumbs {
+  clear: both;
+  margin: -1rem;
+}
+.grid-with-thumbs li {
+  width: 25%;
+  padding: 1rem;
+  margin: 0;
+  float: left;
+}
+.grid-with-thumbs li:nth-child(4n+1) {
+  clear: left;
+}
+.grid-with-thumbs li:hover .thumb:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255,255,255,0.1);
+  z-index: 2;
+}
+.grid-with-thumbs li .title {
+  font-size: 1.5rem;
+  font-weight: 200;
+  line-height: 1.2;
+  margin: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3.6rem;
+}
+.grid-with-thumbs li .author {
+  margin: 0.5rem;
+  opacity: 0.5;
+}
+.grid-with-thumbs li .thumb {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #404044;
+}
+.grid-with-thumbs li .thumb:after {
+  content: '';
+  display: block;
+  padding-top: 65%;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  background: transparent;
+  font: inherit;
+  font-size: 1rem;
+  xfont-weight: 200;
+  color: #fff;
+  border: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  placeholder: rgba(255,255,255,0.2);
+  -webkit-transition: background 0.125s;
+  -moz-transition: background 0.125s;
+  -ms-transition: background 0.125s;
+  -o-transition: background 0.125s;
+  transition: background 0.125s;
+  padding-right: 3rem;
+  text-indent: 0.01px;
+  text-overflow: '';
+  cursor: pointer;
+  border: 2px solid #444;
+  margin-bottom: 1rem;
+}
+select:hover {
+  background: rgba(0,0,0,0.15);
+}
+select:focus {
+  outline: 0;
+}
+select + label:after {
+  font-family: icon;
+  font-size: 1.5rem;
+  content: '\e800';
+  position: relative;
+  left: -2.5rem;
+  top: 0.2rem;
+  width: 1rem;
+  pointer-events: none;
+}
+#filter {
+  float: right;
+  position: relative;
+  right: -1.5rem;
+}
+@media only screen and (max-width: 767px) {
+  .grid-with-thumbs li {
+    width: 100%;
+    float: none;
+  }
+  #page-player .stage {
+    width: 100%;
+  }
+  #page-player .stage .meta,
+  #page-player .stage video {
+    width: 100%;
+    float: none;
+  }
+  #page-player .stage .meta {
+    padding: 1rem 0;
+  }
+}

@@ -1,0 +1,262 @@
+@import url(fontello/css/icon.css)
+
+justify-content()
+  justify-content arguments
+  -webkit-justify-content arguments
+  -ms-flex-pack arguments
+
+align-items()
+  align-items arguments
+  -webkit-align-items arguments
+  -ms-flex-align arguments
+
+display(arg)
+  if arg == 'flex'
+    display block // fallback
+    display -webkit-flex
+    display -ms-flexbox
+  display arg
+
+vendor(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  -ms-{prop} args
+  -o-{prop} args
+  {prop} args
+
+transform()
+  vendor('transform', arguments)
+
+transition()
+  vendor('transition', arguments)
+
+animation()
+  vendor('animation', arguments)
+
+linear-gradient()
+  vendor('transition', arguments)
+
+filter()
+  vendor('filter', arguments)
+
+appearance()
+  vendor('appearance', arguments)
+
+linear-gradient(direction, from, to)
+  add-property(background, s('-webkit-linear-gradient(%s, %s, %s)', direction, from, to))
+  add-property(background, s('-ms-linear-gradient(%s, %s, %s)', direction, from, to))
+  add-property(background, s('-moz-linear-gradient(%s, %s, %s)', direction, from, to))
+  add-property(background, s('-o-linear-gradient(%s, %s, %s)', direction, from, to))
+  add-property(background, s('linear-gradient(%s, %s, %s)', direction, from, to))
+
+html.busy *
+  cursor wait !important
+
+body
+  background #303034
+  color #d0d0d4
+  font-family 'helvetica neue', sans-serif
+  line-height 1.35
+  margin 0
+  padding 0
+  -webkit-perspective 900
+
+template
+  display none // http://caniuse.com/template
+
+*
+  box-sizing border-box
+
+a
+  color #2dceff
+  text-decoration none
+
+ul
+  margin -.5rem
+  padding 0
+
+h1
+  font-size 2rem
+  font-weight 800
+  text-transform uppercase
+  margin .5rem 0 0 0
+  line-height 1
+  letter-spacing -.1rem
+  margin-bottom 2rem
+
+  span
+    font-weight 100
+    letter-spacing .15rem
+
+h2
+  font-weight 200
+  font-size 2rem
+  margin 0 0 2rem 0
+
+#page-player
+  .stage
+    width 80%
+    margin 0 auto
+
+    video
+      float left
+      width 65%
+      -webkit-box-reflect below .25rem -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(rgba(255, 255, 255, .2)))
+
+    .meta
+      float left
+      width 35%
+      padding 0 2rem
+
+      .user
+        .avatar
+          display inline-block
+          float left
+          margin-right 1rem
+          width 4rem
+          height @width
+          border-radius @width * .5
+          overflow hidden
+
+          img
+            width 100%
+
+        .username
+          display inline-block
+          font-weight 400
+          margin-bottom .5rem
+
+.page
+  position relative
+  transform-origin 0 0
+  transition 1s
+  padding 1rem
+
+  &.hidden
+    transform translateZ(-500px)
+    opacity 0
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+    overflow hidden
+    pointer-events none
+
+.no-results
+  font-size 3rem
+  text-align center
+  font-weight 100
+  display flex
+  align-items center
+  justify-content center
+  height 90%
+
+.grid-with-thumbs
+  clear both
+  margin -1rem
+
+  li
+    width 25%
+    padding 1rem
+    margin 0
+    float left
+
+    &:nth-child(4n+1)
+      clear left
+
+    &:hover
+      .thumb:before // highlight effect
+        content ''
+        position absolute
+        top 0
+        left 0
+        right 0
+        bottom 0
+        background rgba(255, 255, 255, .1)
+        z-index 2
+
+    .title
+      font-size 1.5rem
+      font-weight 200
+      line-height 1.2
+      margin .5rem
+      overflow hidden
+      text-overflow ellipsis
+      max-height 3.6rem
+
+    .author
+      margin .5rem
+      opacity .5
+
+    .thumb
+      position relative
+      width 100%
+      margin-bottom .5rem
+      background-position 50% 50%
+      background-repeat no-repeat
+      background-size cover
+      background-color #404044
+
+      &:after
+        content ''
+        display block
+        padding-top 65% // trick to keep fixed aspect ratio with variable width
+
+select
+  appearance none
+  background transparent
+  font inherit
+  font-size 1rem
+  xfont-weight 200
+  color #fff
+  border 0
+  padding .5rem 1rem
+  border-radius .25rem
+  placeholder rgba(255, 255, 255, .2)
+  transition background .125s
+  padding-right 3rem
+  text-indent 0.01px // hide arrow in firefox
+  text-overflow ''   // hide arrow in firefox
+  cursor pointer
+  border 2px solid #444
+  margin-bottom 1rem
+
+  &:hover
+    background rgba(0, 0, 0, .15)
+
+  &:focus
+    outline 0
+
+  & + label:after
+    font-family icon
+    font-size 1.5rem
+    content '\e800'
+    position relative
+    left -2.5rem
+    top .2rem
+    width 1rem
+    pointer-events none
+
+#filter
+  float right
+  position relative
+  right -1.5rem
+
+// Quickly hacked one-column layout for phone-sized devices
+@media only screen and (max-width: 767px)
+  .grid-with-thumbs
+    li
+      width 100%
+      float none
+
+  #page-player
+    .stage
+      width 100%
+
+      .meta, video
+        width 100%
+        float none
+
+      .meta
+        padding 1rem 0
